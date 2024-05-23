@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №4</title>
+    <style>
+      .error-block {
+        display: none;
+      }
+      .image {
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h3>
+        Задача 4. Використовуючи один з АРІ
+        https://github.com/public-apis/public-apis#animals та функцію fetch
+        організувати завантаження та відображення даних
+      </h3>
+      <main>
+        <div class="loader-block">Loading......</div>
+        <div class="image-block">
+          <img src="" alt="" class="image" />
+        </div>
+        <div class="error-block">Помилка завантаження</div>
+      </main>
+    </header>
+    <script>
+      fetch("https://dog.ceo/api/breeds/image/random")
+        .then((result) => result.json())
+        .then((data) => {
+          document.querySelector(".image").src = data.message;
+        })
+        .catch(() => {
+          document.querySelector(".error-block").style.display = "block";
+        })
+        .finally(() => {
+          document.querySelector(".loader-block").style.display = "none";
+        });
+    </script>
+  </body>
+</html>

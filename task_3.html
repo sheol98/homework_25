@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №3</title>
+  </head>
+  <body>
+    <header>
+      <h3>
+        Задача 3. Створити генератор, який би випадковим чином поступово
+        генерував вказану кількість парних чисел.
+      </h3>
+    </header>
+    <main>
+      <div class="cnt"></div>
+    </main>
+    <script>
+      function* getRandomEvenNumber(min, max, countEvenNumber) {
+        let count = 0;
+        while (count <= countEvenNumber) {
+          let randNum = min + Math.floor(Math.random() * (max - min + 1));
+          if (randNum % 2 === 0) {
+            yield randNum;
+            count++;
+          }
+        }
+      }
+
+      for (const num of getRandomEvenNumber(1, 20, 5)) {
+        document.write(`${num}<br>`);
+      }
+    </script>
+  </body>
+</html>
